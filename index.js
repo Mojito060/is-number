@@ -8,11 +8,10 @@
 'use strict';
 
 module.exports = function(num) {
+  // Check if num is a finite number
   if (typeof num === 'number') {
-    return num - num === 0;
+    return num === num; // This checks for NaN
   }
-  if (typeof num === 'string' && num.trim() !== '') {
-    return Number.isFinite ? Number.isFinite(+num) : isFinite(+num);
-  }
-  return false;
+  // Check if num is a non-empty string and try to convert it to a number
+  return typeof num === 'string' && num.trim() ? !isNaN(num) : false;
 };
